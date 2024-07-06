@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  master:
+    hostname: rcj-2021211180-master
+    image: big-data
+    command:
+      - "/run.sh"
+      - "1"
+      - "master"
+    networks:
+      hadoop-network:
+        ipv4_address: 172.126.1.111
+
+  slave1:
+    hostname: rcj-2021211180-slave1
+    image: big-data
+    command:
+      - "/run.sh"
+      - "2"
+      - "slave1"
+    networks:
+      hadoop-network:
+        ipv4_address: 172.126.1.112
+
+  slave2:
+    hostname: rcj-2021211180-slave2
+    image: big-data
+    command:
+      - "/run.sh"
+      - "3"
+      - "slave2"
+    networks:
+      hadoop-network:
+        ipv4_address: 172.126.1.113
+
+  slave3:
+    hostname: rcj-2021211180-slave3
+    image: big-data
+    command:
+      - "/run.sh"
+      - "4"
+      - "slave3"
+    networks:
+      hadoop-network:
+        ipv4_address: 172.126.1.114
+
+networks:
+  hadoop-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.126.1.0/24
